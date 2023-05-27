@@ -15,46 +15,51 @@ class Form extends React.Component {
           data-testid="name-input"
           id="formulario"
           value={ cardName }
+          name="cardName"
           onChange={ onInputChange }
         />
         <textarea
-          name=""
           id=""
           cols="30"
           rows="10"
           data-testid="description-input"
           value={ cardDescription }
+          name="cardDescription"
           onChange={ onInputChange }
         />
         <input
           type="number"
           data-testid="attr1-input"
           value={ cardAttr1 }
+          name="cardAttr1"
           onChange={ onInputChange }
         />
         <input
           type="number"
           data-testid="attr2-input"
           value={ cardAttr2 }
+          name="cardAttr2"
           onChange={ onInputChange }
         />
         <input
           type="number"
           data-testid="attr3-input"
           value={ cardAttr3 }
+          name="cardAttr3"
           onChange={ onInputChange }
         />
         <input
           type="text"
           data-testid="image-input"
           value={ cardImage }
+          name="cardImage"
           onChange={ onInputChange }
         />
         <select
-          name=""
           id=""
           data-testid="rare-input"
           value={ cardRare }
+          name="cardRare"
           onChange={ onInputChange }
         >
           <option value="normal">normal</option>
@@ -65,6 +70,7 @@ class Form extends React.Component {
           type="checkbox"
           data-testid="trunfo-input"
           checked={ cardTrunfo }
+          name="cardTrunfo"
           onChange={ onInputChange }
 
         />

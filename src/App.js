@@ -13,7 +13,7 @@ class App extends React.Component {
     cardRare: '',
     cardTrunfo: false,
     hasTrunfo: false,
-    isSaveButtonDisabled: false,
+    isSaveButtonDisabled: true,
   };
 
   onInputChange = ({ target }) => {
@@ -26,10 +26,18 @@ class App extends React.Component {
     });
   };
 
+  // buttonVerifyVoid = () => {
+  //   const { cardName, cardImage, cardRare } = this.state;
+  //   const isSaveDisable = false;
+  //   if (cardName && cardImage && cardRare === '') {
+  //     isSaveButtonDisabled = true;
+  //   }
+  // };
+
   render() {
     return (
       <div>
-        <h1>Tryunfo oi</h1>
+        <h1>Tryunfo</h1>
         <Form onInputChange={ this.onInputChange } { ...this.state } />
         <Card { ...this.state } />
       </div>

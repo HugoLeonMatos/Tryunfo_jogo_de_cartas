@@ -14,6 +14,7 @@ class Form extends React.Component {
           type="text"
           data-testid="name-input"
           id="formulario"
+          placeholder="cardName"
           value={ cardName }
           name="cardName"
           onChange={ onInputChange }
@@ -22,6 +23,7 @@ class Form extends React.Component {
           id=""
           cols="30"
           rows="10"
+          placeholder="cardDescription"
           data-testid="description-input"
           value={ cardDescription }
           name="cardDescription"
@@ -30,6 +32,7 @@ class Form extends React.Component {
         <input
           type="number"
           data-testid="attr1-input"
+          placeholder="cardAttr1"
           value={ cardAttr1 }
           name="cardAttr1"
           onChange={ onInputChange }
@@ -37,6 +40,7 @@ class Form extends React.Component {
         <input
           type="number"
           data-testid="attr2-input"
+          placeholder="cardAttr2"
           value={ cardAttr2 }
           name="cardAttr2"
           onChange={ onInputChange }
@@ -44,6 +48,7 @@ class Form extends React.Component {
         <input
           type="number"
           data-testid="attr3-input"
+          placeholder="cardAttr3"
           value={ cardAttr3 }
           name="cardAttr3"
           onChange={ onInputChange }
@@ -51,6 +56,7 @@ class Form extends React.Component {
         <input
           type="text"
           data-testid="image-input"
+          placeholder="image-input"
           value={ cardImage }
           name="cardImage"
           onChange={ onInputChange }

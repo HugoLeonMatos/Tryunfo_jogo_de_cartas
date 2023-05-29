@@ -6,21 +6,22 @@ class App extends React.Component {
   state = {
     cardName: '',
     cardDescription: '',
-    cardAttr1: '',
-    cardAttr2: '',
-    cardAttr3: '',
+    cardAttr1: '0',
+    cardAttr2: '0',
+    cardAttr3: '0',
     cardImage: '',
-    cardRare: '',
+    cardRare: 'normal',
     cardTrunfo: false,
     hasTrunfo: false,
     isSaveButtonDisabled: true,
+    cards: [],
   };
 
   onInputChange = ({ target }) => {
     const { name } = target;
     const value = (target.type === 'checkbox') ? target.checked : target.value;
-    console.log(name);
-    console.log(value);
+    // console.log(name);
+    // console.log(value);
     this.setState(
       {
         [name]: value,
@@ -78,11 +79,106 @@ class App extends React.Component {
     });
   };
 
+  // onSaveButtonClick = (event) => {
+  //   event.preventDefault();
+  //   const {
+  //     cardName,
+  //     cardDescription,
+  //     cardImage,
+  //     cardRare,
+  //     cardAttr1,
+  //     cardAttr2,
+  //     cardAttr3,
+  //     cards,
+  //     cardTrunfo,
+  //     hasTrunfo,
+  //   } = this.state;
+  //   cards.push({
+  //     cardSavedName: cardName,
+  //     cardSavedDescription: cardDescription,
+  //     cardSavedImage: cardImage,
+  //     cardSavedRare: cardRare,
+  //     cardSavedAttr1: cardAttr1,
+  //     cardSavedAttr2: cardAttr2,
+  //     cardSavedAttr3: cardAttr3,
+  //     cardSavedTrunfo: cardTrunfo,
+  //   });
+  //   this.setState({
+  //     cards,
+  //     cardName: '',
+  //     cardDescription: '',
+  //     cardImage: '',
+  //     cardRare: 'normal',
+  //     cardAttr1: 0,
+  //     cardAttr2: 0,
+  //     cardAttr3: 0,
+  //     cardTrunfo: false,
+  //   });
+  //   if (!hasTrunfo && cardTrunfo) {
+  //     this.setState({ hasTrunfo: true });
+  //   }
+  // };
+
+  onSaveButtonClick = (event) => {
+    event.preventDefault();
+
+    const {
+      cardName,
+      cardDescription,
+      cardImage,
+      cardRare,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cards,
+      cardTrunfo,
+      hasTrunfo,
+    } = this.state;
+
+    const newCard = {
+      cardSavedName: cardName,
+      cardSavedDescription: cardDescription,
+      cardSavedImage: cardImage,
+      cardSavedRare: cardRare,
+      cardSavedAttr1: cardAttr1,
+      cardSavedAttr2: cardAttr2,
+      cardSavedAttr3: cardAttr3,
+      cardSavedTrunfo: cardTrunfo,
+    };
+
+    const updatedCards = [...cards, newCard];
+    console.log(updatedCards);
+    this.setState(
+      {
+        cards: updatedCards,
+        cardName: '',
+        cardDescription: '',
+        cardImage: '',
+        cardRare: 'normal',
+        cardAttr1: '0',
+        cardAttr2: '0',
+        cardAttr3: '0',
+        cardTrunfo: false,
+        isSaveButtonDisabled: true,
+      },
+      () => {
+        if (!hasTrunfo && cardTrunfo) {
+          this.setState({ hasTrunfo: true });
+        }
+      },
+    );
+  };
+
   render() {
     return (
       <div>
         <h1>Tryunfo</h1>
-        <Form onInputChange={ this.onInputChange } { ...this.state } />
+        <Form
+          onInputChange={ this.onInputChange }
+          onSaveButtonClick={ this.onSaveButtonClick }
+          // isSaveButtonDisabled={ this.isSaveButtonDisabled }
+          { ...this.state }
+        />
         <Card { ...this.state } />
       </div>
     );

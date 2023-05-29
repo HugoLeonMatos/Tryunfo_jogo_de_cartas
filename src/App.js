@@ -122,7 +122,7 @@ class App extends React.Component {
         cardTrunfo: false,
         isSaveButtonDisabled: true,
       },
-      // requisito 7 Será validado se o checkbox do Super Trunfo é renderizado ao carregar a página.
+      // req 7 Será validado se o checkbox do Super Trunfo é renderizado ao carregar a página.
       () => {
         if (!hasTrunfo && cardTrunfo) {
           this.setState({ hasTrunfo: true });

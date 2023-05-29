@@ -132,6 +132,26 @@ class App extends React.Component {
   };
 
   render() {
+    const { cards } = this.state;
+    const newLiCard = cards.map(({ cardSavedName,
+      cardSavedDescription,
+      cardSavedImage,
+      cardSavedRare,
+      cardSavedAttr1,
+      cardSavedAttr2,
+      cardSavedAttr3,
+      cardSavedTrunfo }, index) => (
+        <Card
+        cardName={ cardSavedName }
+        cardDescription={ cardSavedDescription }
+        cardImage={ cardSavedImage }
+        cardRare={ cardSavedRare }
+        cardAttr1={ cardSavedAttr1 }
+        cardAttr2={ cardSavedAttr2 }
+        cardAttr3={ cardSavedAttr3 }
+        cardTrunfo={ cardSavedTrunfo }
+        key={ index }
+      />));
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -142,6 +162,8 @@ class App extends React.Component {
           { ...this.state }
         />
         <Card { ...this.state } />
+        {newLiCard}
+
       </div>
     );
   }

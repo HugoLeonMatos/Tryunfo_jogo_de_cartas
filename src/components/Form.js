@@ -82,6 +82,7 @@ class Form extends React.Component {
           <option value="raro">raro</option>
           <option value="muito raro">muito raro</option>
         </select>
+
         <input
           type="checkbox"
           data-testid="trunfo-input"

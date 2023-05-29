@@ -79,46 +79,6 @@ class App extends React.Component {
     });
   };
 
-  // onSaveButtonClick = (event) => {
-  //   event.preventDefault();
-  //   const {
-  //     cardName,
-  //     cardDescription,
-  //     cardImage,
-  //     cardRare,
-  //     cardAttr1,
-  //     cardAttr2,
-  //     cardAttr3,
-  //     cards,
-  //     cardTrunfo,
-  //     hasTrunfo,
-  //   } = this.state;
-  //   cards.push({
-  //     cardSavedName: cardName,
-  //     cardSavedDescription: cardDescription,
-  //     cardSavedImage: cardImage,
-  //     cardSavedRare: cardRare,
-  //     cardSavedAttr1: cardAttr1,
-  //     cardSavedAttr2: cardAttr2,
-  //     cardSavedAttr3: cardAttr3,
-  //     cardSavedTrunfo: cardTrunfo,
-  //   });
-  //   this.setState({
-  //     cards,
-  //     cardName: '',
-  //     cardDescription: '',
-  //     cardImage: '',
-  //     cardRare: 'normal',
-  //     cardAttr1: 0,
-  //     cardAttr2: 0,
-  //     cardAttr3: 0,
-  //     cardTrunfo: false,
-  //   });
-  //   if (!hasTrunfo && cardTrunfo) {
-  //     this.setState({ hasTrunfo: true });
-  //   }
-  // };
-
   onSaveButtonClick = (event) => {
     event.preventDefault();
 
@@ -148,6 +108,7 @@ class App extends React.Component {
 
     const updatedCards = [...cards, newCard];
     console.log(updatedCards);
+
     this.setState(
       {
         cards: updatedCards,

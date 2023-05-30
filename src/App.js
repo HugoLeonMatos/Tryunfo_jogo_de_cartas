@@ -126,15 +126,12 @@ class App extends React.Component {
     const { cards, hasTrunfo, cardTrunfo } = this.state;
     const updatedCards = [...cards];
     const deletedCard = updatedCards.splice(index, 1)[0];
-  
     if (deletedCard.cardSavedTrunfo && hasTrunfo) {
       this.setState({ hasTrunfo: false });
     }
-  
     if (index === updatedCards.length && cardTrunfo) {
       this.setState({ cardTrunfo: false });
     }
-  
     this.setState({ cards: updatedCards });
   };
   
@@ -174,7 +171,7 @@ class App extends React.Component {
               />
               <button
                 data-testid="delete-button"
-                onClick={() => this.deleteCard(index)}
+                onClick={ () => this.deleteCard(index) }
               >
                 Excluir
               </button>

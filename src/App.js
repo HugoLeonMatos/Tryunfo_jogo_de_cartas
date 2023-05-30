@@ -134,8 +134,6 @@ class App extends React.Component {
     }
     this.setState({ cards: updatedCards });
   };
-  
-
   render() {
     const { cards } = this.state;
     return (

@@ -20,8 +20,6 @@ class App extends React.Component {
   onInputChange = ({ target }) => {
     const { name } = target;
     const value = (target.type === 'checkbox') ? target.checked : target.value;
-    // console.log(name);
-    // console.log(value);
     this.setState(
       {
         [name]: value,
@@ -30,13 +28,6 @@ class App extends React.Component {
     );
   };
 
-  // buttonVerifyVoid = () => {
-  //   const { cardName, cardImage, cardRare } = this.state;
-  //   const isSaveDisable = false;
-  //   if (cardName && cardImage && cardRare === '') {
-  //     isSaveButtonDisabled = true;
-  //   }
-  // };
   buttonVerifyVoid = () => {
     const attrLim = 90;
     const attrTotLim = 210;
@@ -131,11 +122,22 @@ class App extends React.Component {
     );
   };
 
-  // deleteCard = () => {
-  //   if (condition) {
-
-  //   }
-  // };
+  deleteCard = (index) => {
+    const { cards, hasTrunfo, cardTrunfo } = this.state;
+    const updatedCards = [...cards];
+    const deletedCard = updatedCards.splice(index, 1)[0];
+  
+    if (deletedCard.cardSavedTrunfo && hasTrunfo) {
+      this.setState({ hasTrunfo: false });
+    }
+  
+    if (index === updatedCards.length && cardTrunfo) {
+      this.setState({ cardTrunfo: false });
+    }
+  
+    this.setState({ cards: updatedCards });
+  };
+  
 
   render() {
     const { cards } = this.state;
@@ -172,6 +174,7 @@ class App extends React.Component {
               />
               <button
                 data-testid="delete-button"
+                onClick={() => this.deleteCard(index)}
               >
                 Excluir
               </button>

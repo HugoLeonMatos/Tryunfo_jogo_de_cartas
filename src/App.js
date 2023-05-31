@@ -15,6 +15,7 @@ class App extends React.Component {
     hasTrunfo: false,
     isSaveButtonDisabled: true,
     cards: [],
+    filterName: '',
   };
 
   onInputChange = ({ target }) => {
@@ -87,14 +88,14 @@ class App extends React.Component {
     } = this.state;
 
     const newCard = {
-      cardSavedName: cardName,
-      cardSavedDescription: cardDescription,
-      cardSavedImage: cardImage,
-      cardSavedRare: cardRare,
-      cardSavedAttr1: cardAttr1,
-      cardSavedAttr2: cardAttr2,
-      cardSavedAttr3: cardAttr3,
-      cardSavedTrunfo: cardTrunfo,
+      cardName,
+      cardDescription,
+      cardImage,
+      cardRare,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardTrunfo,
     };
 
     const updatedCards = [...cards, newCard];
@@ -136,7 +137,8 @@ class App extends React.Component {
   };
 
   render() {
-    const { cards } = this.state;
+    const { cards, filterName } = this.state;
+    console.log(this.state);
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -147,26 +149,37 @@ class App extends React.Component {
           { ...this.state }
         />
         <Card { ...this.state } />
+
+        <input
+          data-testid="name-filter"
+          type="text"
+          name="filterName"
+          value={ filterName }
+          onChange={ this.onInputChange }
+
+        />
+
         {
-          cards.map(({ cardSavedName,
-            cardSavedDescription,
-            cardSavedImage,
-            cardSavedRare,
-            cardSavedAttr1,
-            cardSavedAttr2,
-            cardSavedAttr3,
-            cardSavedTrunfo,
+          cards.filter((card) => card.cardName.toLowerCase()
+            .includes(filterName.toLocaleLowerCase())).map(({ cardName,
+            cardDescription,
+            cardImage,
+            cardRare,
+            cardAttr1,
+            cardAttr2,
+            cardAttr3,
+            cardTrunfo,
           }, index) => (
             <div key={ index }>
               <Card
-                cardName={ cardSavedName }
-                cardDescription={ cardSavedDescription }
-                cardImage={ cardSavedImage }
-                cardRare={ cardSavedRare }
-                cardAttr1={ cardSavedAttr1 }
-                cardAttr2={ cardSavedAttr2 }
-                cardAttr3={ cardSavedAttr3 }
-                cardTrunfo={ cardSavedTrunfo }
+                cardName={ cardName }
+                cardDescription={ cardDescription }
+                cardImage={ cardImage }
+                cardRare={ cardRare }
+                cardAttr1={ cardAttr1 }
+                cardAttr2={ cardAttr2 }
+                cardAttr3={ cardAttr3 }
+                cardTrunfo={ cardTrunfo }
               />
               <button
                 data-testid="delete-button"

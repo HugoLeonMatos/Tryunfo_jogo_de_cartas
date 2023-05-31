@@ -16,6 +16,7 @@ class App extends React.Component {
     isSaveButtonDisabled: true,
     cards: [],
     filterName: '',
+    filterRare: 'todas',
   };
 
   onInputChange = ({ target }) => {
@@ -137,7 +138,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { cards, filterName } = this.state;
+    const { cards, filterName, filterRare } = this.state;
     console.log(this.state);
     return (
       <div>
@@ -158,10 +159,21 @@ class App extends React.Component {
           onChange={ this.onInputChange }
 
         />
-
+        <select
+          data-testid="rare-filter"
+          value={ filterRare }
+          name="filterRare"
+          onChange={ this.onInputChange }
+        >
+          <option value="todas">todas</option>
+          <option value="normal">normal</option>
+          <option value="raro">raro</option>
+          <option value="muito raro">muito raro</option>
+        </select>
         {
           cards.filter((card) => card.cardName.toLowerCase()
-            .includes(filterName.toLocaleLowerCase())).map(({ cardName,
+            .includes(filterName.toLowerCase())
+            && (filterRare === 'todas' || filterRare === card.cardRare)).map(({ cardName,
             cardDescription,
             cardImage,
             cardRare,
